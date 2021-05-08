@@ -62,3 +62,43 @@ function validatePIN(pin) {
     return /^((\d{4})|(\d{6}))$/.test(pin); //return true or false
 }
 console.log(validatePIN("44444"));
+
+// 4. Highest and Lowest 
+/* 
+In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.
+
+Example:
+
+highAndLow("1 2 3 4 5");  // return "5 1"
+highAndLow("1 2 -3 4 5"); // return "5 -3"
+highAndLow("1 9 3 4 -5"); // return "9 -5"
+Notes:
+
+All numbers are valid Int32, no need to validate them.
+There will always be at least one number in the input string.
+Output string must be two numbers separated by a single space, and highest number is first.
+ */
+
+function highAndLow(nums) {
+    const arrNums = nums.split(" ").map((cur) => +cur);
+    const min = Math.min(...arrNums);
+    const max = Math.max(...arrNums);
+    return "" + max + " " + min;
+}
+
+function highAndLow2(nums) {
+    const arrNums = nums.split(" ").map((cur) => +cur);
+
+    return arrNums
+        .reduce(
+            (acc, curr, i, arr) => {
+                acc[0] = curr > acc[0] ? curr : acc[0];
+                acc[1] = curr < acc[1] ? curr : acc[1];
+                return acc;
+            },
+            [arrNums[0], arrNums[0]]
+        )
+        .join(" ");
+}
+
+console.log(highAndLow2("1 2 3 4 5"));
