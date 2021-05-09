@@ -63,7 +63,7 @@ function validatePIN(pin) {
 }
 console.log(validatePIN("44444"));
 
-// 4. Highest and Lowest 
+// 4. Highest and Lowest
 /* 
 In this little assignment you are given a string of space separated numbers, and have to return the highest and lowest number.
 
@@ -102,3 +102,39 @@ function highAndLow2(nums) {
 }
 
 console.log(highAndLow2("1 2 3 4 5"));
+
+// 5. The highest profit wins!
+/* Story
+Ben has a very simple idea to make some profit: he buys something and sells it again. Of course, this wouldn't give him any profit at all if he was simply to buy and sell it at the same price. Instead, he's going to buy it for the lowest possible price and sell it at the highest.
+
+Task
+Write a function that returns both the minimum and maximum number of the given list/array.
+
+Examples
+minMax([1,2,3,4,5])   == [1,5]
+minMax([2334454,5])   == [5, 2334454]
+minMax([1])           == [1, 1]
+Remarks
+All arrays or lists will always have at least one element, so you don't need to check the length. Also, your function will always get an array or a list, you don't have to check for null, undefined or similar.
+ */
+function minMax(arrNums) {
+    return arrNums.reduce(
+        (acc, curr) => {
+            acc[0] = curr < acc[0] ? curr : acc[0];
+            acc[1] = curr > acc[1] ? curr : acc[1];
+            return acc;
+        },
+        [arrNums[0], arrNums[0]]
+    );
+}
+function minMax2(arrNums) {
+    return arrNums.reduce(
+        (acc, curr) => [
+            curr < acc[0] ? curr : acc[0],
+            curr > acc[1] ? curr : acc[1],
+        ],
+        [arrNums[0], arrNums[0]]
+    );
+}
+
+console.log(minMax2([1, 2, 3, 4, 5]));
