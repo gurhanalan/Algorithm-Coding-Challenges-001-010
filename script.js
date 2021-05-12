@@ -204,3 +204,18 @@ function accum(s) {
         .join("-");
 }
 console.log(accum("RqaEzty"));
+
+// 9. Spacify
+/* Modify the spacify function so that it returns the given string with spaces inserted between each character.
+
+spacify("hello world") // returns "h e l l o   w o r l d" */
+
+function spacify(str) {
+    let newStr = "";
+    for (let char of str) {
+        newStr += char + " ";
+    }
+    return newStr.trim();
+}
+
+console.log(spacify("hello world")); // returns "h e l l o   w o r l d"
